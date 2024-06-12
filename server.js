@@ -21,6 +21,12 @@ db.once('open',()=> console.log("Connected to Database:"));
 // Unlike .on, which can handle multiple events of the same type, .once is used to handle an event only once. 
 // It listens for the open event which signifies that the connection to the database was successfully established.
 
+app.use(express.json());
+
+const subscriberRouter = require('./routes/subscribers');
+
+app.use('/subscribers', subscriberRouter);
+
 app.listen(PORT,()=> {
     console.log(`Hello from server at ${PORT}`);
 });
